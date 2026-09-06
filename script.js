@@ -1,3 +1,6 @@
+
+const dialogSubmitBtn = document.querySelector("#dialog-btn")
+
 const library = [];
 
 function Book(title, author, pagesNumber, id, isRead ){
@@ -13,17 +16,16 @@ function addBookToLibrary(bookTitle, bookAuthor, bookPagesNumber, bookReadingSta
     library.push(book1);
 }
 
-const allCardsContainer = document.querySelector(".book-cards-container");
-addBookToLibrary('test1', "book", 888, true);
-addBookToLibrary('testjl1', "bolkjlok", 8898, true);
-addBookToLibrary('st1', "ok", 8, false);
+
+
 
 function displayBooks(arrayOfBooks){
+    const allCardsContainer = document.querySelector(".book-cards-container");
     arrayOfBooks.forEach(book => { // looping through all the books
-
         const card = document.createElement("div"); // creating the div container for the card
         card.classList.add("card") ; // adding classes to apply styling
-    
+        card.setAttribute("id" , book.id)
+
         const title = document.createElement("h1") ; 
     
         const authorSpan = document.createElement("span"); 
@@ -47,7 +49,22 @@ function displayBooks(arrayOfBooks){
         authorSpan.textContent = "Author:";
         pagesSpan.textContent = "Pages:";
 
-        allCardsContainer.appendChild(card) // finally appending the card to the card container
+        allCardsContainer.appendChild(card); // finally, appending the card to the card container
+
     });
 }
-displayBooks(library)
+
+dialogSubmitBtn.addEventListener("click", (event) =>{
+    const dialog = document.querySelector("dialog")
+
+    const bookTitleValue= document.querySelector("#title").value; // getting the book title
+    const bookAuthorValue = document.querySelector("#author").value; // getting the book author 
+    const numberOfPagesValue = document.querySelector("#pages-number").value; // getting book pages number
+
+    const bookStatueValue = document.querySelector("input[name='radioStatue']:checked");// getting the checked radio button
+
+    addBookToLibrary(bookTitleValue, bookAuthorValue, numberOfPagesValue, bookStatueValue);
+    (document.querySelector("form")).reset()
+    displayBooks(library);
+    dialog.close()
+})

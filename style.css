@@ -58,23 +58,16 @@ h1, h2, h3, h4, h5, h6 {
   Josh's Custom CSS Reset
   https://www.joshwcomeau.com/css/custom-css-reset/
 */
-body{
-    background-color: hsl(0, 0%, 12%);
-    font-family: "Open Sans";
 
+body{
+    font-family: "Open Sans";
     height:100vh;
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .main-display{
-    background-color: white;
+    height: 100%;
+    background-color: hsl(0, 0%, 13%);
 
-    /* trying different design where the content doesn't take the whole screen */
-    height: 80%;
-    width: 80%;
 
     display: grid;
     grid-template-rows: 1fr 10fr;
@@ -82,21 +75,31 @@ body{
 
 
 }
-
 .header{
-    background-color: blue;
+    background-color: hsl(240, 100%, 95%);
     font-size: 30px;
 
-
-    display: flex;
+    display: grid; 
+    grid-template-columns: 10fr 1fr;
     align-items: center;
-    justify-content: center;
+    justify-items: center;
+    
+}
 
+.header div{
+    margin-left: 150px;  /* trying to align it on the middle of the header */
+}
 
+.header button{
+    padding: 5px;
+    color: white;
+    background-color: green;
+    border-radius: 12px;
+
+    width: 100px;
 }
 
 .book-cards-container{
-    background-color: antiquewhite;
     
     display: grid;
 
@@ -149,6 +152,6 @@ span{
     margin-left: 100px;
 } */
 
-button{
+.card button{
     grid-area: button;
 }

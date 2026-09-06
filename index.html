@@ -14,7 +14,8 @@
             <div>Library</div>
 
             <!-- for adding new books -->
-            <button type="button">+</button>
+            <button command="show-modal" commandfor="add-book-dialog">+</button>
+            <!-- Opens the dialog -->
         </div>
 
         <div class="book-cards-container">
@@ -33,5 +34,52 @@
         </div>
 
     </div>
+
+    <!-- The dialog for adding new books -->
+    <dialog id="add-book-dialog" closedby="any">
+
+        <form action="" method="dialog">
+
+            <div> 
+                <label for="title">Book Title : </label>
+                <input type="text" name="title" id="title" required maxlength="40" minlength="2" autofocus placeholder="e.g A Mind For Numbers">
+            </div>
+
+            <div>
+                <label for="author">Book Author : </label>
+                <input type="text" name="author" id="author" required maxlength="40" minlength="2" placeholder="e.g Barbara Oakley">
+            </div>
+                
+            <div>
+                <label for="pages-number">Number of Pages : </label>
+                <input type="number" name="pages-number" id="pages-number" required max="2000" min="1" placeholder="e.g 273"> 
+            </div>    
+            
+
+            <fieldset>
+                <legend>Book Reading Statue</legend>
+
+                <div>
+                    <input type="radio" name="readStatue" id="completed" value="Completed">
+                    <label for="completed">Completed</label>
+                </div>
+
+                <div>
+                    <input type="radio" name="readStatue" id="currently-reading" value="Currently reading" checked >
+                    <label for="currently-reading">Currently reading</label>
+                </div>
+
+                <div>
+                    <input type="radio" name="readStatue" id="not-started" value="Not Started">
+                    <label for="not-started">Not Started</label>
+                </div>
+            </fieldset>
+
+
+            <button type="button" id="dialog-btn">Add</button>
+
+        </form>
+    </dialog>
+
 </body>
 </html>
