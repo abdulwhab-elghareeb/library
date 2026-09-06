@@ -68,6 +68,7 @@ body{
     align-items: center;
     justify-content: center;
 }
+
 .main-display{
     background-color: white;
 
@@ -81,6 +82,7 @@ body{
 
 
 }
+
 .header{
     background-color: blue;
     font-size: 30px;
@@ -92,6 +94,7 @@ body{
 
 
 }
+
 .book-cards-container{
     background-color: antiquewhite;
     
@@ -99,11 +102,12 @@ body{
 
     /* using grid-template-columns/rows : repeat(auto-fit/fill width/height) will produce the same result
     but I prefer this */
-    grid-auto-columns: 600px;
-    grid-auto-rows: 350px;
+    gap: 30px;
+    grid-template-columns: repeat(3, minmax(max-content, 1fr)); /* making sure the card doesn't get too small */
 
     padding: 100px;
 }
+
 .card{
     background-color: white;
     display: grid;
@@ -116,12 +120,13 @@ body{
     "span pages"
     "button button";
 }
-.title{
+h1{
     grid-area: title;
 
     font-size: 25px;
     text-align: center;
 }
+
 span{
     grid-area: span;
 
@@ -130,16 +135,20 @@ span{
     padding: 3px;
     
 }
+
 .author{
     grid-area: author;
 }
-.page-number{
+
+.pages-number{
     grid-area: pages;
 }
+
 /* .author,
 .page-number{
     margin-left: 100px;
 } */
+
 button{
     grid-area: button;
 }
