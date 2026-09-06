@@ -27,6 +27,7 @@
 
 body {
   line-height: 1.5;
+  letter-spacing: 0.03rem;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -57,7 +58,88 @@ h1, h2, h3, h4, h5, h6 {
   Josh's Custom CSS Reset
   https://www.joshwcomeau.com/css/custom-css-reset/
 */
-
 body{
     background-color: hsl(0, 0%, 12%);
+    font-family: "Open Sans";
+
+    height:100vh;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.main-display{
+    background-color: white;
+
+    /* trying different design where the content doesn't take the whole screen */
+    height: 80%;
+    width: 80%;
+
+    display: grid;
+    grid-template-rows: 1fr 10fr;
+    /* header and cards */
+
+
+}
+.header{
+    background-color: blue;
+    font-size: 30px;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+.book-cards-container{
+    background-color: antiquewhite;
+    
+    display: grid;
+
+    /* using grid-template-columns/rows : repeat(auto-fit/fill width/height) will produce the same result
+    but I prefer this */
+    grid-auto-columns: 600px;
+    grid-auto-rows: 350px;
+
+    padding: 100px;
+}
+.card{
+    background-color: white;
+    display: grid;
+    gap: 10px;
+    /* spans and main card content */
+    grid-template-columns: max-content 1fr;
+    grid-template-areas: /* check this later */
+    "title title"
+    "span author"
+    "span pages"
+    "button button";
+}
+.title{
+    grid-area: title;
+
+    font-size: 25px;
+    text-align: center;
+}
+span{
+    grid-area: span;
+
+    background-color: aliceblue;
+
+    padding: 3px;
+    
+}
+.author{
+    grid-area: author;
+}
+.page-number{
+    grid-area: pages;
+}
+/* .author,
+.page-number{
+    margin-left: 100px;
+} */
+button{
+    grid-area: button;
 }
