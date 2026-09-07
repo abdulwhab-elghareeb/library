@@ -29,8 +29,9 @@ display: block;
 max-width: 100%;
 }
 
-input, button, textarea, select {
+input, button, textarea, select{
 font: inherit;
+color: inherit;
 }
 
 p, h1, h2, h3, h4, h5, h6 {
@@ -74,20 +75,20 @@ body{
 
   font-family: var(--primary-font);
   color: var(--primary-font-color);
+
+  min-height: 100vh;
+
+  display: grid;
+  grid-template-rows: 1fr 10fr;
 }
 button{
+  padding: 5px;
   outline: none;
   border-style: none;
   background-color: hsl(74, 58%, 87%);
 
   font-size: 1rem;
   transition: all 0.5s;
-}
-.main-display{
-  min-height: 100vh;
-
-  display: grid;
-  grid-template-rows: 1fr 10fr;
 }
 
 .header{
@@ -104,9 +105,6 @@ button{
   
 }
 
-.header button{
- 
-}
 .header button:hover{
  background-color: hsl( from var(--secondary-color) h s calc(l - 10));
 }
@@ -159,8 +157,7 @@ button{
 }
 
 h1{
-  font: italic 2.5rem cursive;
-  margin-top: -10px;
+  font: italic 2.3rem cursive;
   text-align: center;
 }
 
@@ -171,11 +168,14 @@ h1{
 .number-of-pages{
   grid-area: pages;
 }
+.author{
+  margin-top: 15px;
+}
+
 .author,
 .number-of-pages{
-  margin-top: 20px;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 .del-btn{
@@ -207,4 +207,88 @@ button.currently-reading{
 
 button.completed{
   background-color: hsl(120, 100%, 80%);
+}
+
+dialog{
+  width: 600px;
+  height: 600px;
+  outline: none;
+  border: 0.1rem solid var(--primary-font-color);
+  border-radius: var(--border);
+}
+dialog form{
+  display: grid;
+  gap: 40px;
+  padding: 10px;
+}
+
+form div:not(fieldset > div){
+  display: grid;
+}
+
+input{
+  padding: 5px 10px;
+  outline: none;
+  border: 1px solid var(--primary-font-color);
+  border-radius: 4px;
+  transition: all 0.4s ;
+  background-color: var(--primary-color);
+}
+
+input:hover{
+  background-color: hsl(from var(--primary-color) h s calc(l - 10));
+}
+fieldset{
+  border-radius: var(--border);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+input[type="radio"]{
+  border-radius: 50%;
+  appearance: none;
+  position: relative;
+  height: 1.5rem;
+  width: 1.5rem;
+  vertical-align: -0.3rem;
+  margin-left: 41px;
+}
+#not-started{
+  margin-left: 84px;
+}
+#completed{
+  margin-left: 92px;
+}
+input[type="radio"]:indeterminate{
+  background-color: hsl(from var(--primary-font-color) h s calc(l + 65))
+}
+input[type="radio"]:hover{
+  background-color: var(--primary-color);
+
+}
+input:checked::after{
+  content: "";
+  width: 1rem;
+  height: 1rem;
+
+  background-color: var(--primary-font-color);
+
+  border-radius: 50%;
+  position: absolute;
+
+  right: 3px;
+  bottom: 3px;
+}
+
+form button{
+  font-size: 1.2rem;  
+  border-radius: var(--border);
+}
+form button:hover{
+  height: 50px;
+  background-color: hsl(from var(--primary-font-color) h s calc(l + 55));
+  color: var(--primary-color);
+
 }

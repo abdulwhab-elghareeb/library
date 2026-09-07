@@ -8,21 +8,20 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="main-display"> 
-        <div class="header">
-            <!-- title -->
-            <div>Library</div>
+    <div class="header">
+        <!-- title -->
+        <div>Library</div>
 
-            <!-- for adding new books -->
-            <button command="show-modal" commandfor="add-book-dialog">+</button>
-            <!-- Opens the dialog -->
-        </div>
-
-        <div class="book-cards-container">
-            <!-- cards will be added via js here -->
-        </div>
-
+        <!-- for adding new books -->
+        <button command="show-modal" commandfor="add-book-dialog">+</button>
+        <!-- Opens the dialog -->
     </div>
+
+    <div class="book-cards-container">
+        <!-- cards will be added via js here -->
+    </div>
+
+
 
     <!-- The dialog for adding new books -->
     <dialog id="add-book-dialog" closedby="any">
@@ -31,17 +30,17 @@
 
             <div> 
                 <label for="title">Book Title : </label>
-                <input type="text" name="title" id="title" required maxlength="28" minlength="3" placeholder="e.g., A Mind For Numbers">
+                <input type="text" name="title" id="title" required maxlength="28" minlength="3" >
             </div>
 
             <div>
                 <label for="author">Book Author : </label>
-                <input type="text" name="author" id="author" required maxlength="28" minlength="3" placeholder="e.g., Barbara Oakley">
+                <input type="text" name="author" id="author" required maxlength="28" minlength="3">
             </div>
                 
             <div>
                 <label for="number-of-pages">Number of Pages : </label>
-                <input type="number" name="number-of-pages" id="number-of-pages" required max="2000" min="1" placeholder="e.g., 273"> 
+                <input type="number" name="number-of-pages" id="number-of-pages" required max="2000" min="1" > 
             </div>    
             
 
@@ -49,18 +48,18 @@
                 <legend>Book Reading Statue</legend>
 
                 <div>
-                    <input type="radio" name="reading-status" id="completed" value="Completed">
                     <label for="completed">Completed</label>
+                    <input type="radio" name="reading-status" id="completed" value="Completed">
                 </div>
 
                 <div>
-                    <input type="radio" name="reading-status" id="currently-reading" value="Currently Reading" checked >
                     <label for="currently-reading">Currently reading</label>
+                    <input type="radio" name="reading-status" id="currently-reading" value="Currently Reading">
                 </div>
 
                 <div>
-                    <input type="radio" name="reading-status" id="not-started" value="Not Started">
                     <label for="not-started">Not Started</label>
+                    <input type="radio" name="reading-status" id="not-started" value="Not Started">
                 </div>
             </fieldset>
 
