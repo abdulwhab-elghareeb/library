@@ -20,12 +20,12 @@ function addBookToLibrary(bookTitle, bookAuthor, bookPagesNumber, bookReadingSta
 function displayBooks(arrayOfBooks){
     const allCardsContainer = document.querySelector(".book-cards-container");
 
-    arrayOfBooks.forEach(book => { // looping through all the book/s
+    arrayOfBooks.forEach(book => {
 
         if(!(document.getElementById(book.id))){// making sure that the book doesn't exist on the dom, avoiding duplicate books
 
-            const card = document.createElement("div"); // creating the div container for the card
-            card.classList.add("card") ; // adding classes to apply styling
+            const card = document.createElement("div");
+            card.classList.add("card") ; 
             card.setAttribute("id" , book.id) // adding id to each card to mark it 
             
             const title = document.createElement("h1") ; 
@@ -39,11 +39,15 @@ function displayBooks(arrayOfBooks){
             pagesNumber.classList.add("pages-number");
 
             const deleteBtn = document.createElement("button");
-            deleteBtn.classList.add("delete-btn")
             deleteBtn.textContent = "delete me"
+            deleteBtn.addEventListener("click" , (e) =>{
+                card.remove() // remove the card from display
+                library.splice(library.indexOf(book) , 1) // remove the card from the library
+            })
+            
 
 
-            card.append(title, authorSpan, author, pagesSpan, pagesNumber, deleteBtn); // appending all the elements made to the card to display it later
+            card.append(title, authorSpan, author, pagesSpan, pagesNumber, deleteBtn); // appending all the elements to the card to display it later
 
             title.textContent = book.title;
             author.textContent = book.author;
@@ -59,19 +63,19 @@ function displayBooks(arrayOfBooks){
     });
 }
 
-const dialogSubmitBtn = document.querySelector("#dialog-btn")
-
-dialogSubmitBtn.addEventListener("click", (event) =>{
-    const dialog = document.querySelector("dialog")
+const form = document.querySelector("form");
+form.addEventListener("submit", (event) =>{    
+    // event.preventDefault() not needed because the form doesn't submit it self if it's method is set to "dialog"
 
     const bookTitleValue= document.querySelector("#title").value; // getting the book title
     const bookAuthorValue = document.querySelector("#author").value; // getting the book author 
     const numberOfPagesValue = document.querySelector("#pages-number").value; // getting book pages number
-
+    
     const bookStatueValue = document.querySelector("input[name='radioStatue']:checked");// getting the checked radio button
 
+    
     addBookToLibrary(bookTitleValue, bookAuthorValue, numberOfPagesValue, bookStatueValue);
     (document.querySelector("form")).reset(); // resetting the form
     displayBooks(library);
-    dialog.close();
+
 })

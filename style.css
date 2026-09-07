@@ -75,6 +75,7 @@ body{
 
 
 }
+
 .header{
   background-color: hsl(240, 100%, 95%);
   font-size: 30px;
@@ -123,6 +124,7 @@ body{
   "span pages"
   "button button";
 }
+
 h1{
   grid-area: title;
 
