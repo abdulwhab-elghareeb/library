@@ -1,10 +1,10 @@
 
 const library = [];
 
-function Book(title, author, pagesNumber, readingStatus, id ){
+function Book(title, author, numberOfPages, readingStatus, id ){
     this.title = title;
     this.author = author;
-    this.pagesNumber = pagesNumber;
+    this.numberOfPages = numberOfPages;
     this.readingStatus = readingStatus
     this.id = id
 }
@@ -24,8 +24,8 @@ Book.prototype.changeReadingStatus = function(){
 
 };
 
-function addBookToLibrary(bookTitle, bookAuthor, bookPagesNumber, bookReadingStatus){
-    book1 = new Book(bookTitle, bookAuthor, bookPagesNumber, bookReadingStatus, crypto.randomUUID());
+function addBookToLibrary(bookTitle, bookAuthor, bookNumberOfPages, bookReadingStatus){
+    book1 = new Book(bookTitle, bookAuthor, bookNumberOfPages, bookReadingStatus, crypto.randomUUID());
     library.push(book1);
 };
 
@@ -41,21 +41,22 @@ function displayBooks(arrayOfBooks){
             card.classList.add("card") ; 
             card.setAttribute("data-id" , book.id) // adding id to each card to mark it 
             
-            const title = document.createElement("h1") ; 
+            const titleContainer = document.createElement("div")
+            const title = document.createElement("h1") ;
+            titleContainer.append(title);
+            titleContainer.classList.add("title-container")
             
-            const authorSpan = document.createElement("span"); 
             const author = document.createElement("div");
             author.classList.add("author"); 
 
-            const pagesSpan = document.createElement("span");
-            const pagesNumber = document.createElement("div");
-            pagesNumber.classList.add("pages-number");
+            const numberOfPages = document.createElement("div");
+            numberOfPages.classList.add("number-of-pages");
 
             const readingStatusBtn = document.createElement("button");
             readingStatusBtn.classList.add("reading-status-btn");
             addReadingBtnClass(book,readingStatusBtn) // adds a class depending on book.readingStatus
             readingStatusBtn.addEventListener("click", (e)=>{
-                // toggling between status
+                // toggling between reading status
                 book.changeReadingStatus();
                 adjustReadingBtnClass(book,readingStatusBtn);
                 readingStatusBtn.textContent = book.readingStatus;
@@ -72,16 +73,14 @@ function displayBooks(arrayOfBooks){
             
 
 
-            card.append(title, authorSpan, author, pagesSpan, pagesNumber, readingStatusBtn, deleteBtn); // appending all the elements to the card to display it later
+            card.append(titleContainer, author, numberOfPages, readingStatusBtn, deleteBtn); // appending all the elements to the card to display it later
 
             title.textContent = book.title;
             author.textContent = book.author;
-            pagesNumber.textContent = book.pagesNumber;
+            numberOfPages.textContent = book.numberOfPages;
             readingStatusBtn.textContent = book.readingStatus;
 
-            // the same for each book
-            authorSpan.textContent = "Author:";
-            pagesSpan.textContent = "Pages:";
+
 
             allCardsContainer.appendChild(card); // finally, appending the card to the card container
         
@@ -95,7 +94,7 @@ form.addEventListener("submit", (event) =>{
 
     const bookTitleValue= document.querySelector("#title").value; // getting the book title
     const bookAuthorValue = document.querySelector("#author").value; // getting the book author 
-    const numberOfPagesValue = document.querySelector("#pages-number").value; // getting book pages number
+    const numberOfPagesValue = document.querySelector("#number-of-pages").value; // getting book pages number
     
     const radioBtnId = document.querySelector("input[name='reading-status']:checked").id;
     const radioBtnValue = document.querySelector("input[name='reading-status']:checked").value;// getting the checked radio button
@@ -107,13 +106,14 @@ form.addEventListener("submit", (event) =>{
 
 });
 
+// functions for toggling between reading status
 function addReadingBtnClass(book , btn){
     let btnInitialClass;
     switch(book.readingStatus){
         case "Completed":
             btnInitialClass = "completed"
             break;
-            
+
         case "Currently Reading":
             btnInitialClass = "currently-reading"
             break;
