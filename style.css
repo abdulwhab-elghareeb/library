@@ -1,157 +1,157 @@
 @font-face {
-    font-family: 'Open Sans';
-    src: url('./fonts/OpenSans.woff2') format('woff2'),
-        url('./fonts/OpenSans.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Open Sans';
+  src: url('./fonts/OpenSans.woff2') format('woff2'),
+      url('./fonts/OpenSans.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 /*
-  Josh's Custom CSS Reset
-  https://www.joshwcomeau.com/css/custom-css-reset/
+Josh's Custom CSS Reset
+https://www.joshwcomeau.com/css/custom-css-reset/
 */
 
 *, *::before, *::after {
-  box-sizing: border-box;
+box-sizing: border-box;
 }
 
 *:not(dialog) {
-  margin: 0;
+margin: 0;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  html {
-    interpolate-size: allow-keywords;
-  }
+html {
+  interpolate-size: allow-keywords;
+}
 }
 
 body {
-  line-height: 1.5;
-  letter-spacing: 0.03rem;
-  -webkit-font-smoothing: antialiased;
+line-height: 1.5;
+letter-spacing: 0.03rem;
+-webkit-font-smoothing: antialiased;
 }
 
 img, picture, video, canvas, svg {
-  display: block;
-  max-width: 100%;
+display: block;
+max-width: 100%;
 }
 
 input, button, textarea, select {
-  font: inherit;
+font: inherit;
 }
 
 p, h1, h2, h3, h4, h5, h6 {
-  overflow-wrap: break-word;
+overflow-wrap: break-word;
 }
 
 p {
-  text-wrap: pretty;
+text-wrap: pretty;
 }
 h1, h2, h3, h4, h5, h6 {
-  text-wrap: balance;
+text-wrap: balance;
 }
 
 #root, #__next {
-  isolation: isolate;
+isolation: isolate;
 }
 /*
-  Josh's Custom CSS Reset
-  https://www.joshwcomeau.com/css/custom-css-reset/
+Josh's Custom CSS Reset
+https://www.joshwcomeau.com/css/custom-css-reset/
 */
 
 body{
-    font-family: "Open Sans";
-    height:100vh;
+  font-family: "Open Sans";
+  height:100vh;
 }
 
 .main-display{
-    height: 100%;
-    background-color: hsl(0, 0%, 13%);
+  height: 100%;
+  background-color: hsl(0, 0%, 13%);
 
 
-    display: grid;
-    grid-template-rows: 1fr 10fr;
-    /* header and cards */
+  display: grid;
+  grid-template-rows: 1fr 10fr;
+  /* header and cards */
 
 
 }
 .header{
-    background-color: hsl(240, 100%, 95%);
-    font-size: 30px;
+  background-color: hsl(240, 100%, 95%);
+  font-size: 30px;
 
-    display: grid; 
-    grid-template-columns: 10fr 1fr;
-    align-items: center;
-    justify-items: center;
-    
+  display: grid; 
+  grid-template-columns: 10fr 1fr;
+  align-items: center;
+  justify-items: center;
+  
 }
 
 .header div{
-    margin-left: 150px;  /* trying to align it on the middle of the header */
+  margin-left: 150px;  /* trying to align it on the middle of the header */
 }
 
 .header button{
-    padding: 5px;
-    color: white;
-    background-color: green;
-    border-radius: 12px;
+  padding: 5px;
+  color: white;
+  background-color: green;
+  border-radius: 12px;
 
-    width: 100px;
+  width: 100px;
 }
 
 .book-cards-container{
-    
-    display: grid;
+  
+  display: grid;
 
-    /* using grid-template-columns/rows : repeat(auto-fit/fill width/height) will produce the same result
-    but I prefer this */
-    gap: 30px;
-    grid-template-columns: repeat(3, minmax(max-content, 1fr)); /* making sure the card doesn't get too small */
+  /* using grid-template-columns/rows : repeat(auto-fit/fill width/height) will produce the same result
+  but I prefer this */
+  gap: 30px;
+  grid-template-columns: repeat(3, minmax(max-content, 1fr)); /* making sure the card doesn't get too small */
 
-    padding: 100px;
+  padding: 100px;
 }
 
 .card{
-    background-color: white;
-    display: grid;
-    gap: 10px;
-    /* spans and main card content */
-    grid-template-columns: max-content 1fr;
-    grid-template-areas: /* check this later */
-    "title title"
-    "span author"
-    "span pages"
-    "button button";
+  background-color: white;
+  display: grid;
+  gap: 10px;
+  /* spans and main card content */
+  grid-template-columns: max-content 1fr;
+  grid-template-areas: /* check this later */
+  "title title"
+  "span author"
+  "span pages"
+  "button button";
 }
 h1{
-    grid-area: title;
+  grid-area: title;
 
-    font-size: 25px;
-    text-align: center;
+  font-size: 25px;
+  text-align: center;
 }
 
 span{
-    grid-area: span;
+  grid-area: span;
 
-    background-color: aliceblue;
+  background-color: aliceblue;
 
-    padding: 3px;
-    
+  padding: 3px;
+  
 }
 
 .author{
-    grid-area: author;
+  grid-area: author;
 }
 
 .pages-number{
-    grid-area: pages;
+  grid-area: pages;
 }
 
 /* .author,
 .page-number{
-    margin-left: 100px;
+  margin-left: 100px;
 } */
 
 .card button{
-    grid-area: button;
+  grid-area: button;
 }
