@@ -17,9 +17,11 @@ Book.prototype.changeReadingStatus = function(){
         case "Currently Reading":
             this.readingStatus = "Not Started";
             break;
-        default:
+        case "Not Started":
             this.readingStatus = "Completed" ;
+        
     };
+
 };
 
 function addBookToLibrary(bookTitle, bookAuthor, bookPagesNumber, bookReadingStatus){
@@ -51,8 +53,11 @@ function displayBooks(arrayOfBooks){
 
             const readingStatusBtn = document.createElement("button");
             readingStatusBtn.classList.add("reading-status-btn");
+            addReadingBtnClass(book,readingStatusBtn) // adds a class depending on book.readingStatus
             readingStatusBtn.addEventListener("click", (e)=>{
+                // toggling between status
                 book.changeReadingStatus();
+                adjustReadingBtnClass(book,readingStatusBtn);
                 readingStatusBtn.textContent = book.readingStatus;
             });
 
@@ -92,11 +97,46 @@ form.addEventListener("submit", (event) =>{
     const bookAuthorValue = document.querySelector("#author").value; // getting the book author 
     const numberOfPagesValue = document.querySelector("#pages-number").value; // getting book pages number
     
-    const bookReadingStatusValue = document.querySelector("input[name='reading-status']:checked").value;// getting the checked radio button
+    const radioBtnId = document.querySelector("input[name='reading-status']:checked").id;
+    const radioBtnValue = document.querySelector("input[name='reading-status']:checked").value;// getting the checked radio button
 
     
-    addBookToLibrary(bookTitleValue, bookAuthorValue, numberOfPagesValue, bookReadingStatusValue);
+    addBookToLibrary(bookTitleValue, bookAuthorValue, numberOfPagesValue, radioBtnValue);
     (document.querySelector("form")).reset(); // resetting the form
     displayBooks(library);
 
 });
+
+function addReadingBtnClass(book , btn){
+    let btnInitialClass;
+    switch(book.readingStatus){
+        case "Completed":
+            btnInitialClass = "completed"
+            break;
+            
+        case "Currently Reading":
+            btnInitialClass = "currently-reading"
+            break;
+
+        case "Not Started":
+            btnInitialClass = "not-started"
+            break;
+    };
+    btn.classList.add(btnInitialClass)
+}
+
+function adjustReadingBtnClass(book,btn){
+    switch(book.readingStatus){
+        case "Completed":
+            btn.classList.replace("not-started", "completed")
+            break;
+
+        case "Currently Reading":
+            btn.classList.replace("completed", "currently-reading")
+            break;
+
+        case "Not Started":
+            btn.classList.replace("currently-reading", "not-started")
+            break;
+    };
+};
