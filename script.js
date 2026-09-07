@@ -5,9 +5,10 @@ function Book(title, author, numberOfPages, readingStatus, id ){
     this.title = title;
     this.author = author;
     this.numberOfPages = numberOfPages;
-    this.readingStatus = readingStatus
-    this.id = id
+    this.readingStatus = readingStatus;
+    this.id = id;
 }
+
 Book.prototype.changeReadingStatus = function(){
     switch(this.readingStatus){
         // "Completed" -> "Currently Reading" -> "Not Started" and vise versa
@@ -19,7 +20,6 @@ Book.prototype.changeReadingStatus = function(){
             break;
         case "Not Started":
             this.readingStatus = "Completed" ;
-        
     };
 
 };
@@ -39,12 +39,12 @@ function displayBooks(arrayOfBooks){
 
             const card = document.createElement("div");
             card.classList.add("card") ; 
-            card.setAttribute("data-id" , book.id) // adding id to each card to mark it 
+            card.setAttribute("data-id" , book.id); // adding id to each card to mark it 
             
             const titleContainer = document.createElement("div")
             const title = document.createElement("h1") ;
             titleContainer.append(title);
-            titleContainer.classList.add("title-container")
+            titleContainer.classList.add("title-container");
             
             const author = document.createElement("div");
             author.classList.add("author"); 
@@ -54,8 +54,8 @@ function displayBooks(arrayOfBooks){
 
             const readingStatusBtn = document.createElement("button");
             readingStatusBtn.classList.add("reading-status-btn");
-            addReadingBtnClass(book,readingStatusBtn) // adds a class depending on book.readingStatus
-            readingStatusBtn.addEventListener("click", (e)=>{
+            addReadingBtnClass(book,readingStatusBtn); // adds a class depending on book.readingStatus
+            readingStatusBtn.addEventListener("click", ()=>{
                 // toggling between reading status
                 book.changeReadingStatus();
                 adjustReadingBtnClass(book,readingStatusBtn);
@@ -64,11 +64,11 @@ function displayBooks(arrayOfBooks){
 
 
             const deleteBtn = document.createElement("button");
-            deleteBtn.classList.add("del-btn")
-            deleteBtn.textContent = "delete me"
-            deleteBtn.addEventListener("click" , (e) =>{
-                card.remove() // remove the card from display
-                library.splice(library.indexOf(book) , 1) // remove the card from the library
+            deleteBtn.classList.add("del-btn");
+            deleteBtn.textContent = "Remove";
+            deleteBtn.addEventListener("click" , () =>{
+                card.remove(); // remove the card from display
+                library.splice(library.indexOf(book) , 1); // remove the card from the library
             });
             
 
@@ -80,63 +80,58 @@ function displayBooks(arrayOfBooks){
             numberOfPages.textContent = book.numberOfPages;
             readingStatusBtn.textContent = book.readingStatus;
 
-
-
             allCardsContainer.appendChild(card); // finally, appending the card to the card container
-        
         };
     });
 }
 
 const form = document.querySelector("form");
-form.addEventListener("submit", (event) =>{    
+form.addEventListener("submit", () =>{    
     // event.preventDefault() not needed because the form doesn't submit it self if it's method is set to "dialog"
 
     const bookTitleValue= document.querySelector("#title").value; // getting the book title
     const bookAuthorValue = document.querySelector("#author").value; // getting the book author 
     const numberOfPagesValue = document.querySelector("#number-of-pages").value; // getting book pages number
     
-    const radioBtnId = document.querySelector("input[name='reading-status']:checked").id;
     const radioBtnValue = document.querySelector("input[name='reading-status']:checked").value;// getting the checked radio button
 
-    
     addBookToLibrary(bookTitleValue, bookAuthorValue, numberOfPagesValue, radioBtnValue);
-    (document.querySelector("form")).reset(); // resetting the form
+    form.reset();
     displayBooks(library);
 
 });
 
 // functions for toggling between reading status
-function addReadingBtnClass(book , btn){
+function addReadingBtnClass(book, btn){
     let btnInitialClass;
     switch(book.readingStatus){
         case "Completed":
-            btnInitialClass = "completed"
+            btnInitialClass = "completed";
             break;
 
         case "Currently Reading":
-            btnInitialClass = "currently-reading"
+            btnInitialClass = "currently-reading";
             break;
 
         case "Not Started":
-            btnInitialClass = "not-started"
+            btnInitialClass = "not-started";
             break;
     };
-    btn.classList.add(btnInitialClass)
-}
+    btn.classList.add(btnInitialClass);
+};
 
-function adjustReadingBtnClass(book,btn){
+function adjustReadingBtnClass(book, btn){
     switch(book.readingStatus){
         case "Completed":
-            btn.classList.replace("not-started", "completed")
+            btn.classList.replace("not-started", "completed");
             break;
 
         case "Currently Reading":
-            btn.classList.replace("completed", "currently-reading")
+            btn.classList.replace("completed", "currently-reading");
             break;
 
         case "Not Started":
-            btn.classList.replace("currently-reading", "not-started")
+            btn.classList.replace("currently-reading", "not-started");
             break;
     };
 };
