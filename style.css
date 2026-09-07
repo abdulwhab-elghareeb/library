@@ -20,7 +20,7 @@ html {
 
 body {
 line-height: 1.5;
-letter-spacing: 0.03rem;
+letter-spacing: 0.07rem;
 -webkit-font-smoothing: antialiased;
 }
 
@@ -29,7 +29,7 @@ display: block;
 max-width: 100%;
 }
 
-input, button, textarea, select{
+input, button, textarea, select, dialog{
 font: inherit;
 color: inherit;
 }
@@ -54,96 +54,134 @@ https://www.joshwcomeau.com/css/custom-css-reset/
 */
 :root{
   --primary-color : hsl(67, 50%, 93%);
-  --secondary-color : hsl(30, 53%, 89%);
+  --header-background : hsl(30, 53%, 89%);
   --cards-color : hsl(38, 16%, 89%);
   --primary-font-color : hsl(0 100 20);
   --primary-font : "Commissioner";
   
 
-  --myGreatShadowThatISpent1HourMaking :
-          0.37px 1px 1.25px  hsl(105 55 5 / 7%),
-          0.75px 2px 2.5px  hsl(105 55 5 / 7%),
-          1.5px 4px 5px  hsl(105 55 5 / 7%),
-          3px 8px 10px  hsl(105 55 5 / 7%),
-          6px 16px 20px  hsl(105 55 5 / 7%);
+  --myGreatShadowThatISpent2HoursMaking :
+          0.37px 1px 1.25px  hsl(105 55 5 / 6%),
+          0.75px 2px 2.5px  hsl(105 55 5 / 6%),
+          1.5px 4px 5px  hsl(105 55 5 / 6%),
+          3px 8px 10px  hsl(105 55 5 / 6%),
+          6px 16px 20px  hsl(105 55 5 / 6%);
 
   --border : 1rem;
-
 }
+
+h1{
+  font: italic 2.1rem cursive;
+  text-align: center;
+}
+
+button{
+  padding: 5px;
+  
+  outline: none; /* removes the outline ring when focused */
+  border-style: none;
+  
+  background-color: hsl(74, 58%, 87%);
+  font-size: 1rem;
+  
+}
+/* Common attributes */
+input,
+button{
+  transition: all 0.5s;
+}
+input,
+dialog,
+.card{
+  border-color: var(--primary-font-color);
+}
+
+.header,
+.card{
+  box-shadow: var(--myGreatShadowThatISpent2HoursMaking);
+}
+
+.header button,
+.card,
+form button,
+fieldset,
+dialog,
+form button{
+  border-radius: var(--border);
+}
+
+.del-btn:hover,
+.reading-status-btn:hover,
+.author,
+.number-of-pages,
+form button{
+  font-size: 1.28rem;
+}
+/* Common attributes */
+
 body{
-  background-color: var(--primary-color);
-
-  font-family: var(--primary-font);
-  color: var(--primary-font-color);
-
   min-height: 100vh;
 
   display: grid;
   grid-template-rows: 1fr 10fr;
-}
-button{
-  padding: 5px;
-  outline: none;
-  border-style: none;
-  background-color: hsl(74, 58%, 87%);
-
-  font-size: 1rem;
-  transition: all 0.5s;
-}
-
-.header{
-  background-color: var(--secondary-color);
-  color: var(--primary-font-color);
-  box-shadow: var(--myGreatShadowThatISpent1HourMaking);
-  font-size: 2rem;
-  font-weight: bold;
- 
-  display: grid; 
-  grid-template-columns: 10fr 1fr;
-  align-items: center;
-  justify-items: center;
   
+  background-color: var(--primary-color);
+  color: var(--primary-font-color);
+
+  font-family: var(--primary-font);
+
+}
+/* header */
+.header{  
+  display: grid; 
+  grid-template-columns: 1.15fr 1fr; 
+  align-items: center;
+  justify-items: end;
+  /* every element will be aligned to the end of it's column, that helps centering the title */
+  /* normal centering doesn't work as intended here */
+
+  background-color: var(--header-background);
+  color: var(--primary-font-color);
+}
+
+.header-title{
+  font-size: 1.9rem;
+  font-weight: bold;
 }
 
 .header button:hover{
- background-color: hsl( from var(--secondary-color) h s calc(l - 10));
-}
-.header div{
-  margin-left: 150px;  /* trying to align it on the middle of the header */
+ background-color: hsl(from var(--header-background) h s calc(l - 10));
 }
 
 .header button{
-  padding: 5px;
-  color:var(--primary-font-color);
-  background-color: hsl(120, 100%, 80%);;
-  border-radius: var(--border);
-  font-size: 1.75rem;
   width: 100px;
-}
 
+  padding: 5px;
+  margin-right: 40px; /* pushing it a little bit from the right corner */
+
+  background-color: hsl(120, 100%, 80%);
+  
+  font-size: 1.75rem;
+}
+/* header */
+
+/* cards */
 .book-cards-container{
   display: grid;
+  grid-template-columns: repeat(4, 1fr);
 
   gap: 30px;
-  grid-template-columns: repeat(4, 1fr);
-  padding: 100px; 
+  padding: 100px;
 }
 
 .card{
   height: 400px;
 
   display: grid;
-  grid-template-areas: /* check this later */
-  "title"
-  "author"
-  "pages"
-  "change-btn"
-  "del-btn";
+  grid-template-rows: repeat(3, 1.2fr) 1fr 1fr;
 
   background-color: var(--cards-color);
-  border-radius: var(--border);
-  box-shadow: var(--myGreatShadowThatISpent1HourMaking);
-
+  border: 0.1rem solid;
 }
 
 .title-container{
@@ -151,50 +189,26 @@ button{
   align-items: center;
   justify-content: center;
 
-  grid-area: title;
-  background-color: hsl(208, 100%, 96%);
-  border-radius: var(--border) 12px 0 0;
-}
-
-h1{
-  font: italic 2.3rem cursive;
-  text-align: center;
+  background-color: hsl(from var(--primary-font-color) h s calc(l + 12));
+  color: var(--header-background);
+  border-radius: 0.9rem 0.9rem 0 0; /* not 1 because the card has a 0.1 rem border, the same for del button */
 }
 
 .author{
-  grid-area: author;
-}
-
-.number-of-pages{
-  grid-area: pages;
-}
-.author{
-  margin-top: 15px;
+  margin-top: 25px;
 }
 
 .author,
 .number-of-pages{
   text-align: center;
-  font-size: 1.3rem;
 }
 
 .del-btn{
-  grid-area: del-btn;
+  border-radius: 0 0 0.9rem 0.9rem;
 }
 
-.reading-status-btn{
-  grid-area: change-btn;
-}
-
-
-.card button:last-of-type{
-  border-radius: 0 0 12px 12px;
-}
-
-.card button:hover{
-  opacity: 0.8;
+.reading-status-btn:hover{
   border-radius: 50% 50% 0 0 ;
-  font-size: 1.4rem;
 }
 
 button.not-started{
@@ -208,87 +222,96 @@ button.currently-reading{
 button.completed{
   background-color: hsl(120, 100%, 80%);
 }
+/* cards */
 
+/* dialog and forms */
 dialog{
   width: 600px;
   height: 600px;
+
   outline: none;
-  border: 0.1rem solid var(--primary-font-color);
-  border-radius: var(--border);
+  border: 0.1rem solid;
 }
 dialog form{
   display: grid;
+
   gap: 40px;
-  padding: 10px;
+  padding: 11px;
 }
 
-form div:not(fieldset > div){
+form > div{ /* only the input forms */
   display: grid;
 }
 
 input{
-  padding: 5px 10px;
   outline: none;
-  border: 1px solid var(--primary-font-color);
+  
+  border: 1px solid;
   border-radius: 4px;
-  transition: all 0.4s ;
   background-color: var(--primary-color);
+  
+  
+  padding: 5px 10px;
+
 }
 
 input:hover{
   background-color: hsl(from var(--primary-color) h s calc(l - 10));
 }
+
 fieldset{
-  border-radius: var(--border);
   display: flex;
   flex-direction: column;
   justify-content: center;
+
   gap: 10px;
 }
 
 input[type="radio"]{
-  border-radius: 50%;
   appearance: none;
+
+  border-radius: 50%;
+
   position: relative;
   height: 1.5rem;
   width: 1.5rem;
   vertical-align: -0.3rem;
   margin-left: 41px;
+  
 }
-#not-started{
-  margin-left: 84px;
-}
-#completed{
-  margin-left: 92px;
-}
-input[type="radio"]:indeterminate{
-  background-color: hsl(from var(--primary-font-color) h s calc(l + 65))
-}
-input[type="radio"]:hover{
-  background-color: var(--primary-color);
 
+#not-started{
+  margin-left: 5.5rem; /* aligning with the rest of the radio buttons */
 }
+
+#completed{
+  margin-left: 5.97rem; /* aligning with the rest of the radio buttons */
+}
+
+input[type="radio"]:hover{
+  background-color: hsl(from var(--primary-font-color) h s calc(l + 68));
+}
+
 input:checked::after{
   content: "";
+
+  position: absolute;
   width: 1rem;
   height: 1rem;
 
   background-color: var(--primary-font-color);
 
   border-radius: 50%;
-  position: absolute;
 
   right: 3px;
   bottom: 3px;
 }
 
-form button{
-  font-size: 1.2rem;  
-  border-radius: var(--border);
-}
+
 form button:hover{
-  height: 50px;
+  height: 47px;
   background-color: hsl(from var(--primary-font-color) h s calc(l + 55));
   color: var(--primary-color);
 
 }
+/* dialog and forms */

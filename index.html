@@ -9,8 +9,7 @@
 </head>
 <body>
     <div class="header">
-        <!-- title -->
-        <div>Library</div>
+        <div class="header-title">Library</div>
 
         <!-- for adding new books -->
         <button command="show-modal" commandfor="add-book-dialog">+</button>
@@ -27,24 +26,24 @@
     <dialog id="add-book-dialog" closedby="any">
 
         <form method="dialog">
-
+            <!--Input forms-->
             <div> 
                 <label for="title">Book Title : </label>
-                <input type="text" name="title" id="title" required maxlength="28" minlength="3" >
+                <input type="text" name="title" id="title" required maxlength="28" minlength="3" placeholder="e.g., A Mind For Numbers" >
             </div>
 
             <div>
                 <label for="author">Book Author : </label>
-                <input type="text" name="author" id="author" required maxlength="28" minlength="3">
+                <input type="text" name="author" id="author" required maxlength="28" minlength="3" placeholder="e.g., Barbara Oakley">
             </div>
                 
             <div>
                 <label for="number-of-pages">Number of Pages : </label>
-                <input type="number" name="number-of-pages" id="number-of-pages" required max="2000" min="1" > 
+                <input type="number" name="number-of-pages" id="number-of-pages" required max="2000" min="1" placeholder="e.g., 273"> 
             </div>    
             
 
-            <fieldset>
+            <fieldset> <!--Radio buttons-->
                 <legend>Book Reading Statue</legend>
 
                 <div>
@@ -63,9 +62,7 @@
                 </div>
             </fieldset>
 
-
-            <button>Add</button>
-
+            <button>Add</button><!--Submit button-->
         </form>
     </dialog>
 
