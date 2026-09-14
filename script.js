@@ -1,32 +1,37 @@
 
 const library = [];
 
-function Book(title, author, numberOfPages, readingStatus, id ){
-    this.title = title;
-    this.author = author;
-    this.numberOfPages = numberOfPages;
-    this.readingStatus = readingStatus;
-    this.id = id;
+class Book {
+    title;
+    author;
+    numberOfPages;
+    readingStatus;
+    id = crypto.randomUUID();
+
+    constructor(title, author, numberOfPages, readingStatus){
+        this.title = title;
+        this.author = author;
+        this.numberOfPages = numberOfPages;
+        this.readingStatus = readingStatus;
+    }
+
+    changeReadingStatus(){
+        switch(this.readingStatus){
+            // "Completed" -> "Currently Reading" -> "Not Started" and vise versa
+            case "Completed":
+                this.readingStatus = "Currently Reading";
+                break;
+            case "Currently Reading":
+                this.readingStatus = "Not Started";
+                break;
+            case "Not Started":
+                this.readingStatus = "Completed" ;
+        };
+    };
 }
 
-Book.prototype.changeReadingStatus = function(){
-    switch(this.readingStatus){
-        // "Completed" -> "Currently Reading" -> "Not Started" and vise versa
-        case "Completed":
-            this.readingStatus = "Currently Reading";
-            break;
-        case "Currently Reading":
-            this.readingStatus = "Not Started";
-            break;
-        case "Not Started":
-            this.readingStatus = "Completed" ;
-    };
-
-};
-
 function addBookToLibrary(bookTitle, bookAuthor, bookNumberOfPages, bookReadingStatus){
-    book1 = new Book(bookTitle, bookAuthor, bookNumberOfPages, bookReadingStatus, crypto.randomUUID());
-    library.push(book1);
+    library.push(new Book(bookTitle, bookAuthor, bookNumberOfPages, bookReadingStatus));
 };
 
 
