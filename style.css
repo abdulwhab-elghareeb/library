@@ -4,100 +4,118 @@ Josh's Custom CSS Reset
 https://www.joshwcomeau.com/css/custom-css-reset/
 */
 
-*, *::before, *::after {
-box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 *:not(dialog) {
-margin: 0;
+  margin: 0;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-html {
-  interpolate-size: allow-keywords;
-}
+  html {
+    interpolate-size: allow-keywords;
+  }
 }
 
 body {
-line-height: 1.5;
-letter-spacing: 0.07rem;
--webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+  letter-spacing: 0.07rem;
+  -webkit-font-smoothing: antialiased;
 }
 
-img, picture, video, canvas, svg {
-display: block;
-max-width: 100%;
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
 }
 
-input, button, textarea, select, dialog{
-font: inherit;
-color: inherit;
+input,
+button,
+textarea,
+select,
+dialog {
+  font: inherit;
+  color: inherit;
 }
 
-p, h1, h2, h3, h4, h5, h6 {
-overflow-wrap: break-word;
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
 }
 
 p {
-text-wrap: pretty;
+  text-wrap: pretty;
 }
-h1, h2, h3, h4, h5, h6 {
-text-wrap: balance;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
 }
 
-#root, #__next {
-isolation: isolate;
+#root,
+#__next {
+  isolation: isolate;
 }
 /*
 Josh's Custom CSS Reset
 https://www.joshwcomeau.com/css/custom-css-reset/
 */
-:root{
-  --primary-color : hsl(67, 50%, 93%);
-  --header-background : hsl(30, 53%, 89%);
-  --cards-color : hsl(38, 16%, 89%);
-  --primary-font-color : hsl(0 100 20);
-  --primary-font : "Commissioner";
-  
+:root {
+  --primary-color: hsl(67, 50%, 93%);
+  --header-background: hsl(30, 53%, 89%);
+  --cards-color: hsl(38, 16%, 89%);
+  --primary-font-color: hsl(0 100 20);
+  --primary-font: "Commissioner";
 
-  --myGreatShadowThatISpent2HoursMaking :
-          0.37px 1px 1.25px  hsl(105 55 5 / 6%),
-          0.75px 2px 2.5px  hsl(105 55 5 / 6%),
-          1.5px 4px 5px  hsl(105 55 5 / 6%),
-          3px 8px 10px  hsl(105 55 5 / 6%),
-          6px 16px 20px  hsl(105 55 5 / 6%);
+  --myGreatShadowThatISpent2HoursMaking:
+    0.37px 1px 1.25px hsl(105 55 5 / 6%), 0.75px 2px 2.5px hsl(105 55 5 / 6%),
+    1.5px 4px 5px hsl(105 55 5 / 6%), 3px 8px 10px hsl(105 55 5 / 6%),
+    6px 16px 20px hsl(105 55 5 / 6%);
 
-  --border : 1rem;
+  --border: 1rem;
 }
 
-h1{
+h1 {
   font: italic 2.1rem cursive;
   text-align: center;
 }
 
-button{
+button {
   padding: 5px;
-  
+
   outline: none; /* removes the outline ring when focused */
   border-style: none;
-  
+
   background-color: hsl(74, 58%, 87%);
   font-size: 1rem;
-  
 }
 /* Common attributes */
 input,
-button{
+button {
   transition: all 0.5s;
 }
 input,
 dialog,
-.card{
+.card {
   border-color: var(--primary-font-color);
 }
 
 .header,
-.card{
+.card {
   box-shadow: var(--myGreatShadowThatISpent2HoursMaking);
 }
 
@@ -106,7 +124,7 @@ dialog,
 form button,
 fieldset,
 dialog,
-form button{
+form button {
   border-radius: var(--border);
 }
 
@@ -114,27 +132,26 @@ form button{
 .reading-status-btn:hover,
 .author,
 .number-of-pages,
-form button{
+form button {
   font-size: 1.28rem;
 }
 /* Common attributes */
 
-body{
+body {
   min-height: 100vh;
 
   display: grid;
   grid-template-rows: 1fr 10fr;
-  
+
   background-color: var(--primary-color);
   color: var(--primary-font-color);
 
   font-family: var(--primary-font);
-
 }
 /* header */
-.header{  
-  display: grid; 
-  grid-template-columns: 1.15fr 1fr; 
+.header {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
   align-items: center;
   justify-items: end;
   /* every element will be aligned to the end of it's column, that helps centering the title */
@@ -144,29 +161,29 @@ body{
   color: var(--primary-font-color);
 }
 
-.header-title{
+.header-title {
   font-size: 1.9rem;
   font-weight: bold;
 }
 
-.header button:hover{
- background-color: hsl(from var(--header-background) h s calc(l - 10));
+.header button:hover {
+  background-color: hsl(from var(--header-background) h s calc(l - 10));
 }
 
-.header button{
+.header button {
   width: 100px;
 
   padding: 5px;
   margin-right: 40px; /* pushing it a little bit from the right corner */
 
   background-color: hsl(120, 100%, 80%);
-  
+
   font-size: 1.75rem;
 }
 /* header */
 
 /* cards */
-.book-cards-container{
+.book-cards-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 
@@ -174,7 +191,7 @@ body{
   padding: 100px;
 }
 
-.card{
+.card {
   height: 400px;
 
   display: grid;
@@ -184,7 +201,7 @@ body{
   border: 0.1rem solid;
 }
 
-.title-container{
+.title-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -194,72 +211,71 @@ body{
   border-radius: 0.9rem 0.9rem 0 0; /* not 1 because the card has a 0.1 rem border, the same for del button */
 }
 
-.author{
+.author {
   margin-top: 25px;
 }
 
 .author,
-.number-of-pages{
+.number-of-pages {
   text-align: center;
 }
 
-.del-btn{
+.del-btn {
   border-radius: 0 0 0.9rem 0.9rem;
 }
 
-.reading-status-btn:hover{
-  border-radius: 50% 50% 0 0 ;
+.reading-status-btn:hover {
+  border-radius: 50% 50% 0 0;
 }
 
-button.not-started{
-  background-color: hsl(0, 100%,80%);
+button.not-started {
+  background-color: hsl(0, 100%, 80%);
 }
 
-button.currently-reading{
+button.currently-reading {
   background-color: hsl(39, 100%, 80%);
 }
 
-button.completed{
+button.completed {
   background-color: hsl(120, 100%, 80%);
 }
 /* cards */
 
 /* dialog and forms */
-dialog{
-  width: 600px;
-  height: 600px;
+dialog {
+  width: 650px;
+  height: 650px;
 
   outline: none;
   border: 0.1rem solid;
 }
-dialog form{
+dialog form {
   display: grid;
 
   gap: 40px;
   padding: 11px;
 }
 
-form > div{ /* only the input forms */
+form > div {
+  /* only the input forms */
   display: grid;
 }
 
-input{
+input {
   outline: none;
-  
+
   border: 1px solid;
   border-radius: 4px;
   background-color: var(--primary-color);
-  
-  
-  padding: 5px 10px;
 
+  padding: 5px 10px;
 }
 
-input:hover{
+input:hover {
   background-color: hsl(from var(--primary-color) h s calc(l - 10));
 }
 
-fieldset{
+fieldset {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -267,7 +283,7 @@ fieldset{
   gap: 10px;
 }
 
-input[type="radio"]{
+input[type="radio"] {
   appearance: none;
 
   border-radius: 50%;
@@ -277,22 +293,21 @@ input[type="radio"]{
   width: 1.5rem;
   vertical-align: -0.3rem;
   margin-left: 41px;
-  
 }
 
-#not-started{
+#not-started {
   margin-left: 5.5rem; /* aligning with the rest of the radio buttons */
 }
 
-#completed{
+#completed {
   margin-left: 5.97rem; /* aligning with the rest of the radio buttons */
 }
 
-input[type="radio"]:hover{
+input[type="radio"]:hover {
   background-color: hsl(from var(--primary-font-color) h s calc(l + 68));
 }
 
-input:checked::after{
+input:checked::after {
   content: "";
 
   position: absolute;
@@ -307,11 +322,30 @@ input:checked::after{
   bottom: 3px;
 }
 
-
-form button:hover{
+form button:hover {
   height: 47px;
   background-color: hsl(from var(--primary-font-color) h s calc(l + 55));
   color: var(--primary-color);
+}
 
+*:user-invalid {
+  border-color: hsl(0 100 40);
+}
+
+*:user-valid {
+  border-color: hsl(120, 100%, 35%);
+}
+
+.error.active {
+  display: block;
+  background-color: hsl(0, 100%, 90%);
+  color: red;
+
+  border-end-end-radius: 16px;
+  border-end-start-radius: 16px;
+  padding: 2px 3px;
+
+  font-size: 13px;
+  text-align: center;
 }
 /* dialog and forms */

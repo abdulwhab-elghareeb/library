@@ -1,70 +1,110 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
-</head>
-<body>
+  </head>
+  <body>
     <div class="header">
-        <div class="header-title">Library</div>
+      <div class="header-title">Library</div>
 
-        <!-- for adding new books -->
-        <button command="show-modal" commandfor="add-book-dialog">+</button>
-        <!-- Opens the dialog -->
+      <!-- for adding new books -->
+      <button command="show-modal" commandfor="add-book-dialog">+</button>
+      <!-- Opens the dialog -->
     </div>
 
     <div class="book-cards-container">
-        <!-- cards will be added via js here -->
+      <!-- cards will be added via js here -->
     </div>
-
-
 
     <!-- The dialog for adding new books -->
     <dialog id="add-book-dialog" closedby="any">
+      <form method="dialog" novalidate>
+        <!--Input forms-->
+        <div>
+          <label for="title">Book Title : </label>
+          <input
+            type="text"
+            name="title"
+            id="title"
+            required
+            maxlength="36"
+            minlength="3"
+            placeholder="e.g., A Mind For Numbers"
+          />
+          <span class="error"></span>
+        </div>
 
-        <form method="dialog">
-            <!--Input forms-->
-            <div> 
-                <label for="title">Book Title : </label>
-                <input type="text" name="title" id="title" required maxlength="36" minlength="3" placeholder="e.g., A Mind For Numbers" >
-            </div>
+        <div>
+          <label for="author">Book Author : </label>
+          <input
+            type="text"
+            name="author"
+            id="author"
+            required
+            maxlength="28"
+            minlength="3"
+            placeholder="e.g., Barbara Oakley"
+          />
+          <span class="error"></span>
+        </div>
 
-            <div>
-                <label for="author">Book Author : </label>
-                <input type="text" name="author" id="author" required maxlength="28" minlength="3" placeholder="e.g., Barbara Oakley">
-            </div>
-                
-            <div>
-                <label for="number-of-pages">Number of Pages : </label>
-                <input type="number" name="number-of-pages" id="number-of-pages" required max="2000" min="1" placeholder="e.g., 273"> 
-            </div>    
-            
+        <div>
+          <label for="number-of-pages">Number of Pages : </label>
+          <input
+            type="number"
+            name="number-of-pages"
+            id="number-of-pages"
+            required
+            max="2000"
+            min="3"
+            placeholder="e.g., 273"
+          />
+          <span class="error"></span>
+        </div>
 
-            <fieldset> <!--Radio buttons-->
-                <legend>Book Reading Status</legend>
+        <fieldset>
+          <!--Radio buttons-->
+          <legend>Book Reading Status</legend>
 
-                <div>
-                    <label for="completed">Completed</label>
-                    <input type="radio" name="reading-status" id="completed" value="Completed">
-                </div>
+          <div>
+            <label for="completed">Completed</label>
+            <input
+              type="radio"
+              name="reading-status"
+              id="completed"
+              value="Completed"
+            />
+          </div>
 
-                <div>
-                    <label for="currently-reading">Currently reading</label>
-                    <input type="radio" name="reading-status" id="currently-reading" value="Currently Reading">
-                </div>
+          <div>
+            <label for="currently-reading">Currently reading</label>
+            <input
+              type="radio"
+              name="reading-status"
+              id="currently-reading"
+              value="Currently Reading"
+              checked
+            />
+          </div>
 
-                <div>
-                    <label for="not-started">Not Started</label>
-                    <input type="radio" name="reading-status" id="not-started" value="Not Started">
-                </div>
-            </fieldset>
+          <div>
+            <label for="not-started">Not Started</label>
+            <input
+              type="radio"
+              name="reading-status"
+              id="not-started"
+              value="Not Started"
+            />
+          </div>
+        </fieldset>
 
-            <button>Add</button><!--Submit button-->
-        </form>
+        <button>Add</button
+        ><!--Submit button-->
+      </form>
     </dialog>
-
-</body>
+  </body>
 </html>
